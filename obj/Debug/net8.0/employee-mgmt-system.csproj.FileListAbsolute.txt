@@ -1,0 +1,15 @@
+C:\Projects\employee-mgmt-system\bin\Debug\net8.0\employee-mgmt-system.exe
+C:\Projects\employee-mgmt-system\bin\Debug\net8.0\employee-mgmt-system.deps.json
+C:\Projects\employee-mgmt-system\bin\Debug\net8.0\employee-mgmt-system.runtimeconfig.json
+C:\Projects\employee-mgmt-system\bin\Debug\net8.0\employee-mgmt-system.dll
+C:\Projects\employee-mgmt-system\bin\Debug\net8.0\employee-mgmt-system.pdb
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.AssemblyInfoInputs.cache
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.AssemblyInfo.cs
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.csproj.CoreCompileInputs.cache
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.sourcelink.json
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.dll
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\refint\employee-mgmt-system.dll
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.pdb
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\employee-mgmt-system.genruntimeconfig.cache
+C:\Projects\employee-mgmt-system\obj\Debug\net8.0\ref\employee-mgmt-system.dll
