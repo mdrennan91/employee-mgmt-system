@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
 
+// this holds info about one employee
 class Employee
 {
     public int Id { get; set; }
@@ -9,10 +13,12 @@ class Employee
     public Department Department { get; set; }
 }
 
+// simple struct for the department name
 struct Department
 {
-    public string Name;
+    public string Name { get; set; }
 
+    [JsonConstructor]
     public Department(string name)
     {
         Name = name;
@@ -21,15 +27,24 @@ struct Department
 
 class Program
 {
+    // list to hold all employees
     static List<Employee> employees = new List<Employee>();
+    
+    // keeps track of the next ID we should assign
     static int nextId = 1;
+
+    // this is the name of the file we’ll load/save to
+    const string FilePath = "employees.json";
 
     static void Main()
     {
+        LoadEmployees(); // try to load existing employee data
+
         bool running = true;
 
         while (running)
         {
+            // main menu
             Console.WriteLine("\n--- Employee Management System ---");
             Console.WriteLine("1. Add Employee");
             Console.WriteLine("2. View Employees");
@@ -52,9 +67,11 @@ class Program
             }
         }
 
+        SaveEmployees(); // write everything to the file before quitting
         Console.WriteLine("Goodbye!");
     }
 
+    // add a new employee to the list
     static void AddEmployee()
     {
         Console.Write("Enter employee name: ");
@@ -77,6 +94,7 @@ class Program
         Console.WriteLine("Employee added.");
     }
 
+    // show all employees in the list
     static void ViewEmployees()
     {
         Console.WriteLine("\n--- Employee List ---");
@@ -86,6 +104,7 @@ class Program
         }
     }
 
+    // update an existing employee's info
     static void EditEmployee()
     {
         Console.Write("Enter employee ID to edit: ");
@@ -119,6 +138,7 @@ class Program
         }
     }
 
+    // remove an employee from the list
     static void DeleteEmployee()
     {
         Console.Write("Enter employee ID to delete: ");
@@ -139,5 +159,38 @@ class Program
         {
             Console.WriteLine("Invalid ID.");
         }
+    }
+
+    // try to read data from the json file
+    static void LoadEmployees()
+    {
+        if (!File.Exists(FilePath))
+            return;
+
+        try
+        {
+            string json = File.ReadAllText(FilePath);
+
+            if (string.IsNullOrWhiteSpace(json))
+                return;
+
+            var loadedEmployees = JsonSerializer.Deserialize<List<Employee>>(json);
+            if (loadedEmployees != null)
+            {
+                employees = loadedEmployees;
+                nextId = employees.Count > 0 ? employees[^1].Id + 1 : 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Warning: Failed to load employee data. {ex.Message}");
+        }
+    }
+
+    // save data to the json file
+    static void SaveEmployees()
+    {
+        string json = JsonSerializer.Serialize(employees, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(FilePath, json);
     }
 }
