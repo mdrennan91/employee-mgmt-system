@@ -23,8 +23,6 @@ The project is written entirely in C#. I also used the built-in `System.Text.Jso
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-
 - add validation for duplicate employee names or roles
 - improve the menu UI (maybe color or spacing)
 - allow sorting or filtering the employee list
