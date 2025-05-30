@@ -1,0 +1,11 @@
+# Ignore build and debug files
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.user
+*.suo
+
+# Ignore your data file
+employees.json
