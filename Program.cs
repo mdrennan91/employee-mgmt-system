@@ -6,6 +6,17 @@ class Employee
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Role { get; set; }
+    public Department Department { get; set; }
+}
+
+struct Department
+{
+    public string Name;
+
+    public Department(string name)
+    {
+        Name = name;
+    }
 }
 
 class Program
@@ -52,13 +63,17 @@ class Program
         Console.Write("Enter employee role: ");
         string? role = Console.ReadLine();
 
-        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(role))
+        Console.Write("Enter department name: ");
+        string? deptName = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(role) || string.IsNullOrWhiteSpace(deptName))
         {
-            Console.WriteLine("Name and role cannot be empty.");
+            Console.WriteLine("Name, role, and department cannot be empty.");
             return;
         }
 
-        employees.Add(new Employee { Id = nextId++, Name = name, Role = role });
+        var department = new Department(deptName);
+        employees.Add(new Employee { Id = nextId++, Name = name, Role = role, Department = department });
         Console.WriteLine("Employee added.");
     }
 
@@ -67,7 +82,7 @@ class Program
         Console.WriteLine("\n--- Employee List ---");
         foreach (var emp in employees)
         {
-            Console.WriteLine($"ID: {emp.Id}, Name: {emp.Name}, Role: {emp.Role}");
+            Console.WriteLine($"ID: {emp.Id}, Name: {emp.Name}, Role: {emp.Role}, Department: {emp.Department.Name}");
         }
     }
 
@@ -79,11 +94,17 @@ class Program
             var emp = employees.Find(e => e.Id == id);
             if (emp != null)
             {
-                Console.Write("Enter new name: ");
-                emp.Name = Console.ReadLine();
+                Console.Write("Enter new name (leave blank to keep current): ");
+                string? newName = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(newName)) emp.Name = newName;
 
-                Console.Write("Enter new role: ");
-                emp.Role = Console.ReadLine();
+                Console.Write("Enter new role (leave blank to keep current): ");
+                string? newRole = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(newRole)) emp.Role = newRole;
+
+                Console.Write("Enter new department (leave blank to keep current): ");
+                string? newDept = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(newDept)) emp.Department = new Department(newDept);
 
                 Console.WriteLine("Employee updated.");
             }
@@ -97,7 +118,7 @@ class Program
             Console.WriteLine("Invalid ID.");
         }
     }
-    
+
     static void DeleteEmployee()
     {
         Console.Write("Enter employee ID to delete: ");
