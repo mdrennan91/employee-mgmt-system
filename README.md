@@ -2,9 +2,9 @@
 
 This project is a simple console-based employee management system built in C#. My goal with this project was to get more comfortable with the C# language and understand how it handles basic things like classes, structs, file input/output, and working with lists.
 
-I wanted to create something that felt like a real-world application — even if small — so I could practice adding, editing, and saving structured data. This app lets you manage employee records and stores the data between sessions using a local JSON file.
+I wanted to create something that felt like a real-world application so I could practice adding, editing, and saving structured data. This app lets you manage employee records and stores the data between sessions using a local JSON file.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/_Txv4t_qoy0)
 
 # Development Environment
 
